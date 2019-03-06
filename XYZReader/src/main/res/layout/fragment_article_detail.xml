@@ -76,7 +76,8 @@
                         style="?android:attr/textAppearanceSmall"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="#8fff" />
+                        android:textColor="#8fff"
+                    android:textSize="16sp"/>
                 </LinearLayout>
 
                 <TextView
@@ -96,16 +97,18 @@
         </FrameLayout>
     </com.example.xyzreader.ui.ObservableScrollView>
 
-    <ImageButton android:id="@+id/share_fab"
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/share_fab"
         android:stateListAnimator="@animator/fab_state_list_anim"
-        android:background="@drawable/add_fab_background"
-        android:layout_gravity="bottom|end"
-        android:layout_marginEnd="@dimen/fab_margin"
-        android:layout_marginBottom="@dimen/fab_margin"
-        android:layout_width="56dp"
-        android:layout_height="56dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
         android:src="@drawable/ic_share"
-        app:elevation="@dimen/fab_elevation"
-        android:contentDescription="@string/action_share" />
+        android:layout_margin="24dp"
+        android:contentDescription="@string/action_share"
+    app:rippleColor="@color/primary_light"
+    android:background="@color/accent"
+    app:fabSize="auto"
+    app:elevation="6dp"/>
 
 </com.example.xyzreader.ui.DrawInsetsFrameLayout>
