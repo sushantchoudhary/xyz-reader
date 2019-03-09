@@ -65,10 +65,7 @@ public class ArticleListActivity extends AppCompatActivity implements
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setupWindowAnimations();
-
         setContentView(R.layout.activity_article_list);
-
 
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
 
@@ -158,13 +155,11 @@ public class ArticleListActivity extends AppCompatActivity implements
                 @Override
                 public void onClick(View view) {
 
-//                    Bundle bundle = ActivityOptions.makeSceneTransitionAnimation(ArticleListActivity.this).toBundle();
-//                    startActivity(new Intent(Intent.ACTION_VIEW,
-//                            ItemsContract.Items.buildItemUri(getItemId(vh.getAdapterPosition()))), bundle);
+                    Bundle bundle = ActivityOptions.makeSceneTransitionAnimation(ArticleListActivity.this).toBundle();
+                    startActivity(new Intent(Intent.ACTION_VIEW,
+                            ItemsContract.Items.buildItemUri(getItemId(vh.getAdapterPosition()))), bundle);
 //                    setupWindowAnimations();
 
-                    startActivity(new Intent(Intent.ACTION_VIEW,
-                            ItemsContract.Items.buildItemUri(getItemId(vh.getAdapterPosition()))));
 
                 }
             });
@@ -220,10 +215,10 @@ public class ArticleListActivity extends AppCompatActivity implements
         if(Build.VERSION.SDK_INT>20) {
             Slide slide = new Slide();
             slide.setSlideEdge(Gravity.LEFT);
-            slide.setDuration(1000);
+            slide.setDuration(2000);
             slide.setInterpolator(new AccelerateDecelerateInterpolator());
             getWindow().setExitTransition(slide);
-            getWindow().setEnterTransition(slide);
+//            getWindow().setEnterTransition(slide);
         }
     }
 

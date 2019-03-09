@@ -51,8 +51,9 @@ public class ArticleDetailActivity extends AppCompatActivity
                             View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
         }
 
-        setFadeAnimation();
         setContentView(R.layout.activity_article_detail);
+//        setAnimation();
+
 
 
 
@@ -153,10 +154,10 @@ public class ArticleDetailActivity extends AppCompatActivity
     {
         if(Build.VERSION.SDK_INT>20) {
             Slide slide = new Slide();
-            slide.setSlideEdge(Gravity.LEFT);
+            slide.setSlideEdge(Gravity.RIGHT);
             slide.setDuration(1000);
             slide.setInterpolator(new AccelerateDecelerateInterpolator());
-            getWindow().setExitTransition(slide);
+//            getWindow().setExitTransition(slide);
             getWindow().setEnterTransition(slide);
         }
     }
