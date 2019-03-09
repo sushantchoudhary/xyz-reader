@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.support.v13.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.transition.Fade;
 import android.transition.Slide;
 import android.util.TypedValue;
 import android.view.Gravity;
@@ -50,9 +51,11 @@ public class ArticleDetailActivity extends AppCompatActivity
                             View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
         }
 
-        setAnimation();
-
+        setFadeAnimation();
         setContentView(R.layout.activity_article_detail);
+
+
+
 
         getLoaderManager().initLoader(0, null, this);
 
@@ -151,12 +154,22 @@ public class ArticleDetailActivity extends AppCompatActivity
         if(Build.VERSION.SDK_INT>20) {
             Slide slide = new Slide();
             slide.setSlideEdge(Gravity.LEFT);
-            slide.setDuration(400);
+            slide.setDuration(1000);
             slide.setInterpolator(new AccelerateDecelerateInterpolator());
             getWindow().setExitTransition(slide);
             getWindow().setEnterTransition(slide);
         }
     }
+
+    public void setFadeAnimation()
+    {
+        if(Build.VERSION.SDK_INT>20) {
+            Fade fade = new Fade();
+            fade.setDuration(1000);
+            getWindow().setEnterTransition(fade);
+        }
+    }
+
 
     public void onUpButtonFloorChanged(long itemId, ArticleDetailFragment fragment) {
         if (itemId == mSelectedItemId) {

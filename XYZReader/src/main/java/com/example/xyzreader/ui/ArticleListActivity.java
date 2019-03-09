@@ -21,11 +21,14 @@ import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.text.format.DateUtils;
+import android.transition.Slide;
 import android.util.Log;
 import android.util.TypedValue;
+import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.TextView;
 
 import com.example.xyzreader.R;
@@ -61,7 +64,11 @@ public class ArticleListActivity extends AppCompatActivity implements
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        setupWindowAnimations();
+
         setContentView(R.layout.activity_article_list);
+
 
         mToolbar = (Toolbar) findViewById(R.id.toolbar);
 
@@ -154,6 +161,7 @@ public class ArticleListActivity extends AppCompatActivity implements
 //                    Bundle bundle = ActivityOptions.makeSceneTransitionAnimation(ArticleListActivity.this).toBundle();
 //                    startActivity(new Intent(Intent.ACTION_VIEW,
 //                            ItemsContract.Items.buildItemUri(getItemId(vh.getAdapterPosition()))), bundle);
+//                    setupWindowAnimations();
 
                     startActivity(new Intent(Intent.ACTION_VIEW,
                             ItemsContract.Items.buildItemUri(getItemId(vh.getAdapterPosition()))));
@@ -162,6 +170,8 @@ public class ArticleListActivity extends AppCompatActivity implements
             });
             return vh;
         }
+
+
 
         private Date parsePublishedDate() {
             try {
@@ -203,6 +213,17 @@ public class ArticleListActivity extends AppCompatActivity implements
         @Override
         public int getItemCount() {
             return mCursor.getCount();
+        }
+    }
+
+    private void setupWindowAnimations() {
+        if(Build.VERSION.SDK_INT>20) {
+            Slide slide = new Slide();
+            slide.setSlideEdge(Gravity.LEFT);
+            slide.setDuration(1000);
+            slide.setInterpolator(new AccelerateDecelerateInterpolator());
+            getWindow().setExitTransition(slide);
+            getWindow().setEnterTransition(slide);
         }
     }
 
