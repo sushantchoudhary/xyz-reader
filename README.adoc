@@ -4,4 +4,4 @@ This repository stores the code for the XYZ Reader project with material UI and 
 
 Demo :
 
-![](xyzreader-tablet.gif)
+![Demo gif](https://github.com/sushantchoudhary/xyz-reader/blob/master/xyzreader-tablet.gif)
